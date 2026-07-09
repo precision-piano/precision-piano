@@ -1,0 +1,58 @@
+.pricing {
+	padding: 0;
+	margin: 0 0 40px 0;
+	list-style: none;
+	@extend %flexbox;
+	@include flex-flow(wrap);
+
+	li {
+		padding: 30px;
+		margin: 0 0 20px 0;
+		box-sizing: border-box;
+		width: 100%;
+		border: 1px solid #eee;
+
+		@media #{$tablet} {
+			@include flex(1, 1, calc(50% - 20px));
+			margin-right: 20px;
+
+			&:nth-child(2n) {
+				margin-right: 0;
+			}
+		}
+
+		@media #{$desktop} {
+			@include flex(1, 1, calc(33.333% - 20px));
+
+			&:nth-child(2n) {
+				margin-right: 20px;
+			}
+
+			&:nth-child(3n) {
+				margin-right: 0;
+			}
+		}
+	}
+
+	h3 {
+		margin-top: 0;
+	}
+
+	.price {
+		color: $brand-color;
+		font-size: 1.6em;
+		font-weight: 700;
+		margin-bottom: 10px;
+
+		span {
+			font-size: .55em;
+			font-weight: 300;
+			color: #666;
+		}
+	}
+
+	p {
+		font-size: 1em;
+		margin-bottom: 0;
+	}
+}

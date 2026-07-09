@@ -1,0 +1,19 @@
+left_links:
+  - name: About
+    link: /about/
+  - name: Blog
+    link: /blog/
+  - name: Contact
+    link: /contact/
+right_links:
+  - name:
+    link: https://facebook.com/
+    new_window: true
+    social_icon: Facebook
+  - name:
+    link: https://instagram.com/
+    new_window: true
+    social_icon: Instagram
+  - name:
+    link: /feed.xml
+    social_icon: RSS

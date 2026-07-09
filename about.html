@@ -1,0 +1,31 @@
+---
+title: About
+description: Frank Fischer and a small team of NBSS-trained technicians serving midcoast Maine.
+image: https://placehold.co/2000x1322?text=Piano+workshop
+---
+
+<section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
+	<div class="inner-hero text-container">
+		<div class="hero-text-container">
+			<h1 class="editable">Our Story</h1>
+			<p class="subtext editable">Precision Piano has served midcoast Maine for years, tuning, repairing and restoring pianos for churches, music centers, halls and private clients from the coast inland to Bangor.</p>
+		</div>
+	</div>
+</section>
+
+<section class="pad">
+	<div class="container">
+		<p class="editable">Precision Piano was founded by Frank Fischer, a graduate of the North Bennet Street School's Advanced Piano Technology program. Today the team includes technicians trained in that same tradition of hands-on craftsmanship, dedicated to keeping every piano we touch sounding its best.</p>
+		<p class="editor-link"><a href="cloudcannon:collections/_staff_members" class="btn"><strong>&#9998;</strong> Manage Staff Members</a></p>
+		<ul class="staff">
+			{% for person in site.staff_members %}
+				<li>
+					<div class="square-image" style="background-image: url({% include relative-src.html src=person.image_path %})"></div>
+					<div class="name">{{ person.name }}</div>
+					<div class="position">{{ person.position }}</div>
+					<p class="blurb">{{ person.blurb }}</p>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>
