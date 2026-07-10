@@ -8,7 +8,7 @@
 
 	var didScroll = false;
 
-	$(window).scroll(function () {
+	window.addEventListener("scroll", function () {
 		didScroll = true;
 	});
 
@@ -27,13 +27,15 @@
 		changeHeader();
 	});
 
-	$("a[href*=\\#]").on("click", function (event) {
-		if(this.pathname === window.location.pathname) {
-			event.preventDefault();
-
-			$("html, body").animate({
-				scrollTop: $(this.hash).offset().top
-			}, 500);
-		}
+	document.querySelectorAll('a[href*="#"]').forEach(function (link) {
+		link.addEventListener("click", function (event) {
+			if (link.pathname === window.location.pathname) {
+				var target = document.querySelector(link.hash);
+				if (target) {
+					event.preventDefault();
+					target.scrollIntoView({ behavior: "smooth" });
+				}
+			}
+		});
 	});
 })();
