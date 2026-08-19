@@ -9,15 +9,8 @@ author_staff_member: frank
 ---
 A piano isn't just heavy, it's an oddly balanced, delicate instrument built from thousands of parts under high tension. Moving one without the right equipment and technique risks damage to the case, the action, or the people carrying it.
 
-A few things worth doing before moving day:
+It is helpful if you can let us know what it is like entering the home all the way until the piano comes to its final place. Whether there are steps, doorways, thresholds, letting us know will help us prepare. A picture is worth a thousand words.
 
-## Measure your doorways and stairwells
-
-Know the dimensions of your piano and the tightest points it needs to pass through, including turns in hallways and stairwells, before moving day arrives.
-
-## Expect it to need a tuning afterward
-
-Even a careful, short-distance move can knock a piano out of tune, especially if it crosses into a room with different humidity or temperature. Plan on a tuning visit a few weeks after the move, once the piano has settled into its new environment.
 
 ## Let professionals handle the heavy lifting
 
