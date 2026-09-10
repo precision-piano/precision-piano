@@ -1,11 +1,8 @@
 ---
 title: Contact
 description: Get in touch to schedule a tuning, repair or piano move.
-map:
-  latitude: 44.45
-  longitude: -68.75
-  zoom: 9
 image: /images/NBSS-2026-057.jpg
+
 ---
 
 <section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
@@ -127,109 +124,130 @@ image: /images/NBSS-2026-057.jpg
 
 <div class="map" id="map"></div>
 
+<link
+	rel="stylesheet"
+	href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <script>
-	window.mapData = {{ page.map | jsonify }};
+	document.addEventListener("DOMContentLoaded", function () {
 
-	function initMap() {
-		var myOptions = {
-			scrollwheel: false,
-			draggable: false,
-			panControl: false,
-			disableDefaultUI: true,
-			styles: [
-				{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"color":"#f7f1df"}]},
-				{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"color":"#d0e3b4"}]},
-				{"featureType":"landscape.natural.terrain","elementType":"geometry","stylers":[{"visibility":"off"}]},
-				{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},
-				{"featureType":"poi.business","elementType":"all","stylers":[{"visibility":"off"}]},
-				{"featureType":"poi.medical","elementType":"geometry","stylers":[{"color":"#fbd3da"}]},
-				{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#bde6ab"}]},
-				{"featureType":"road","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},
-				{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},
-				{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffe15f"}]},
-				{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#efd151"}]},
-				{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},
-				{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"black"}]},
-				{"featureType":"transit.station.airport","elementType":"geometry.fill","stylers":[{"color":"#cfb2db"}]},
-				{"featureType":"water","elementType":"geometry","stylers":[{"color":"#a2daf2"}]}
-			],
+		// Create the map
+		var map = L.map("map", {
+			scrollWheelZoom: false,
+			dragging: false,
+			zoomControl: false
+		}).setView([44.45, -68.75], 9);
 
-			zoom: 9,
-			maxZoom: 10,
-			minZoom: 8,
-
-			center: new google.maps.LatLng(44.45, -68.75),
-
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
-
-		var map = new google.maps.Map(
-			document.getElementById('map'),
-			myOptions
-		);
+		// OpenStreetMap map tiles
+		L.tileLayer(
+			"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+			{
+				maxZoom: 18,
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+			}
+		).addTo(map);
 
 		/*
 		 * Approximate Precision Piano service area.
 		 *
-		 * Covers:
-		 * Rockland
-		 * Camden
-		 * Belfast
-		 * Bangor
-		 * Blue Hill
-		 * Ellsworth
-		 * Coastal communities and islands in between
+		 * The area covers the Midcoast Maine communities
+		 * from Rockland through Camden and Belfast,
+		 * north toward Bangor, and east through
+		 * Blue Hill and Ellsworth.
 		 */
 		var serviceArea = [
-			// Western / southern edge
-			{ lat: 44.0657, lng: -69.1089 }, // Rockland
+			[44.0657, -69.1089], // Rockland
 
-			// Midcoast
-			{ lat: 44.1200, lng: -69.0600 },
-			{ lat: 44.2098, lng: -69.0648 }, // Camden
-			{ lat: 44.3000, lng: -69.0200 },
-			{ lat: 44.3800, lng: -69.0000 },
-			{ lat: 44.4289, lng: -68.9947 }, // Belfast
+			[44.12, -69.06],
+			[44.2098, -69.0648], // Camden
+			[44.30, -69.02],
+			[44.38, -69.00],
+			[44.4289, -68.9947], // Belfast
 
-			// Northern edge toward Bangor
-			{ lat: 44.6000, lng: -68.9000 },
-			{ lat: 44.8012, lng: -68.7778 }, // Bangor
-			{ lat: 44.8500, lng: -68.6500 },
+			[44.60, -68.90],
+			[44.8012, -68.7778], // Bangor
+			[44.85, -68.65],
 
-			// Eastern / coastal edge
-			{ lat: 44.8000, lng: -68.5000 },
-			{ lat: 44.7000, lng: -68.4300 },
-			{ lat: 44.5434, lng: -68.4195 }, // Ellsworth
-			{ lat: 44.5000, lng: -68.4700 },
-			{ lat: 44.4139, lng: -68.5867 }, // Blue Hill
+			[44.80, -68.50],
+			[44.70, -68.43],
+			[44.5434, -68.4195], // Ellsworth
 
-			// Blue Hill / island area
-			{ lat: 44.3500, lng: -68.6200 },
-			{ lat: 44.2800, lng: -68.6500 },
-			{ lat: 44.2200, lng: -68.7000 },
+			[44.50, -68.47],
+			[44.4139, -68.5867], // Blue Hill
 
-			// Back toward Midcoast
-			{ lat: 44.1500, lng: -68.7800 },
-			{ lat: 44.1000, lng: -68.9000 },
+			[44.35, -68.62],
+			[44.28, -68.65],
+			[44.22, -68.70],
 
-			// Close polygon
-			{ lat: 44.0657, lng: -69.1089 }
+			[44.15, -68.78],
+			[44.10, -68.90],
+
+			[44.0657, -69.1089] // Close polygon
 		];
 
-		var polygon = new google.maps.Polygon({
-			paths: serviceArea,
-			strokeColor: "#2c5f73",
-			strokeOpacity: 0.85,
-			strokeWeight: 2,
+		// Draw the service area
+		L.polygon(serviceArea, {
+			color: "#2c5f73",
+			weight: 2,
+			opacity: 0.9,
 			fillColor: "#2c5f73",
-			fillOpacity: 0.15,
-			map: map
+			fillOpacity: 0.18
+		}).addTo(map);
+
+		// Add labels for the major communities
+		var locations = [
+			[44.0657, -69.1089, "Rockland"],
+			[44.2098, -69.0648, "Camden"],
+			[44.4289, -68.9947, "Belfast"],
+			[44.8012, -68.7778, "Bangor"],
+			[44.5434, -68.4195, "Ellsworth"],
+			[44.4139, -68.5867, "Blue Hill"]
+		];
+
+		locations.forEach(function(location) {
+			L.circleMarker([location[0], location[1]], {
+				radius: 5,
+				color: "#2c5f73",
+				weight: 2,
+				fillColor: "#ffffff",
+				fillOpacity: 1
+			})
+			.addTo(map)
+			.bindTooltip(location[2], {
+				permanent: true,
+				direction: "top",
+				offset: [0, -6],
+				className: "precision-piano-map-label"
+			});
 		});
 
-		google.maps.event.addDomListener(window, 'resize', function() {
-			map.setCenter(myOptions.center);
-		});
-	}
+		// Add a simple service-area label
+		L.control.attribution({
+			prefix: false
+		}).addTo(map);
+
+	});
 </script>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ site.google_maps_javascript_api_key }}&amp;callback=initMap"></script>
+<style>
+	#map {
+		width: 100%;
+		height: 450px;
+		min-height: 350px;
+	}
+
+	.precision-piano-map-label {
+		background: rgba(255, 255, 255, 0.9);
+		border: none;
+		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+		color: #2c5f73;
+		font-family: inherit;
+		font-size: 12px;
+		font-weight: 600;
+		padding: 3px 6px;
+		border-radius: 3px;
+	}
+</style>
