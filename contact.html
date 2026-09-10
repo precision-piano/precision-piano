@@ -50,9 +50,22 @@ image: /images/NBSS-2026-057.jpg
       id="phone"
       name="phone"
       autocomplete="tel"
+	  required
     >
   </div>
 
+	<div class="form-group">
+    <label for="address">Address</label>
+    <input
+      type="where"
+      id="address"
+      name="address"
+      autocomplete="where"
+	  required
+    >
+  </div>
+
+			
   <div class="form-group">
     <label for="service">What can we help you with?</label>
     <select id="service" name="service">
@@ -108,8 +121,6 @@ image: /images/NBSS-2026-057.jpg
 			<h3>Address</h3>
 			<address><a target="_blank" href="https://www.google.com/maps/place/{{ page.map.address | url_encode }}">{{ page.map.address | replace: ", ", ", <br>" }}</a></address>
 
-			<h3>Email</h3>
-			<p class="editable"><a href="mailto:borchardwill@gmail.com">iborchardwill@gmail.com</a></p>
 		</div>
 	</div>
 </section>
