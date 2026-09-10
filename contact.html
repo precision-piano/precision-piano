@@ -2,9 +2,9 @@
 title: Contact
 description: Get in touch to schedule a tuning, repair or piano move.
 map:
-  latitude: 35.209
-  longitude: -82.739 
-  zoom: 13
+  latitude: 44.45
+  longitude: -68.75
+  zoom: 9
 image: /images/NBSS-2026-057.jpg
 ---
 
@@ -125,19 +125,94 @@ image: /images/NBSS-2026-057.jpg
 			draggable: false,
 			panControl: false,
 			disableDefaultUI: true,
-			styles: [{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"color":"#f7f1df"}]},{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"color":"#d0e3b4"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","elementType":"geometry","stylers":[{"color":"#fbd3da"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#bde6ab"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffe15f"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#efd151"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"black"}]},{"featureType":"transit.station.airport","elementType":"geometry.fill","stylers":[{"color":"#cfb2db"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#a2daf2"}]}],
-			zoom: window.mapData.zoom,
-			maxZoom: window.mapData.zoom,
-			minZoom: window.mapData.zoom,
-			center: new google.maps.LatLng(window.mapData.latitude, window.mapData.longitude),
+			styles: [
+				{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"color":"#f7f1df"}]},
+				{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"color":"#d0e3b4"}]},
+				{"featureType":"landscape.natural.terrain","elementType":"geometry","stylers":[{"visibility":"off"}]},
+				{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},
+				{"featureType":"poi.business","elementType":"all","stylers":[{"visibility":"off"}]},
+				{"featureType":"poi.medical","elementType":"geometry","stylers":[{"color":"#fbd3da"}]},
+				{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#bde6ab"}]},
+				{"featureType":"road","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},
+				{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},
+				{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffe15f"}]},
+				{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#efd151"}]},
+				{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},
+				{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"black"}]},
+				{"featureType":"transit.station.airport","elementType":"geometry.fill","stylers":[{"color":"#cfb2db"}]},
+				{"featureType":"water","elementType":"geometry","stylers":[{"color":"#a2daf2"}]}
+			],
+
+			zoom: 9,
+			maxZoom: 10,
+			minZoom: 8,
+
+			center: new google.maps.LatLng(44.45, -68.75),
+
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 
-		var map = new google.maps.Map(document.getElementById('map'), myOptions);
+		var map = new google.maps.Map(
+			document.getElementById('map'),
+			myOptions
+		);
 
-		var marker = new google.maps.Marker({
-			map: map,
-			position: new google.maps.LatLng(window.mapData.latitude, window.mapData.longitude)
+		/*
+		 * Approximate Precision Piano service area.
+		 *
+		 * Covers:
+		 * Rockland
+		 * Camden
+		 * Belfast
+		 * Bangor
+		 * Blue Hill
+		 * Ellsworth
+		 * Coastal communities and islands in between
+		 */
+		var serviceArea = [
+			// Western / southern edge
+			{ lat: 44.0657, lng: -69.1089 }, // Rockland
+
+			// Midcoast
+			{ lat: 44.1200, lng: -69.0600 },
+			{ lat: 44.2098, lng: -69.0648 }, // Camden
+			{ lat: 44.3000, lng: -69.0200 },
+			{ lat: 44.3800, lng: -69.0000 },
+			{ lat: 44.4289, lng: -68.9947 }, // Belfast
+
+			// Northern edge toward Bangor
+			{ lat: 44.6000, lng: -68.9000 },
+			{ lat: 44.8012, lng: -68.7778 }, // Bangor
+			{ lat: 44.8500, lng: -68.6500 },
+
+			// Eastern / coastal edge
+			{ lat: 44.8000, lng: -68.5000 },
+			{ lat: 44.7000, lng: -68.4300 },
+			{ lat: 44.5434, lng: -68.4195 }, // Ellsworth
+			{ lat: 44.5000, lng: -68.4700 },
+			{ lat: 44.4139, lng: -68.5867 }, // Blue Hill
+
+			// Blue Hill / island area
+			{ lat: 44.3500, lng: -68.6200 },
+			{ lat: 44.2800, lng: -68.6500 },
+			{ lat: 44.2200, lng: -68.7000 },
+
+			// Back toward Midcoast
+			{ lat: 44.1500, lng: -68.7800 },
+			{ lat: 44.1000, lng: -68.9000 },
+
+			// Close polygon
+			{ lat: 44.0657, lng: -69.1089 }
+		];
+
+		var polygon = new google.maps.Polygon({
+			paths: serviceArea,
+			strokeColor: "#2c5f73",
+			strokeOpacity: 0.85,
+			strokeWeight: 2,
+			fillColor: "#2c5f73",
+			fillOpacity: 0.15,
+			map: map
 		});
 
 		google.maps.event.addDomListener(window, 'resize', function() {
@@ -145,4 +220,5 @@ image: /images/NBSS-2026-057.jpg
 		});
 	}
 </script>
+
 <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ site.google_maps_javascript_api_key }}&amp;callback=initMap"></script>
