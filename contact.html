@@ -138,10 +138,13 @@ image: /images/NBSS-2026-057.jpg
 		var map = L.map("map", {
 			scrollWheelZoom: false,
 			dragging: false,
+			doubleClickZoom: false,
+			boxZoom: false,
+			keyboard: false,
 			zoomControl: false
-		}).setView([44.45, -68.75], 9);
+		}).setView([44.48, -68.72], 9);
 
-		// OpenStreetMap map tiles
+		// Clean OpenStreetMap base layer
 		L.tileLayer(
 			"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
 			{
@@ -151,81 +154,105 @@ image: /images/NBSS-2026-057.jpg
 		).addTo(map);
 
 		/*
-		 * Approximate Precision Piano service area.
+		 * PRECISION PIANO SERVICE AREA
 		 *
-		 * The area covers the Midcoast Maine communities
-		 * from Rockland through Camden and Belfast,
-		 * north toward Bangor, and east through
-		 * Blue Hill and Ellsworth.
+		 * Approximate area includes:
+		 *
+		 * Rockland
+		 * South Thomaston
+		 * Thomaston
+		 * Owl's Head
+		 * Camden
+		 * Union
+		 * Searsport / Searsport area
+		 * Sears­mont
+		 * Belfast
+		 * Monroe
+		 * Bangor
+		 * Blue Hill
+		 * Ellsworth
+		 * Bar Harbor
+		 * Vinalhaven
+		 * and surrounding coastal/island communities
 		 */
+
 		var serviceArea = [
+
+			// SOUTHWESTERN EDGE
 			[44.0657, -69.1089], // Rockland
+			[44.0500, -69.1000], // South Thomaston
+			[44.0750, -69.1500], // Thomaston / Owl's Head area
 
-			[44.12, -69.06],
+			// MIDCOAST / CAMDEN
+			[44.1200, -69.0900],
+			[44.1500, -69.0750],
 			[44.2098, -69.0648], // Camden
-			[44.30, -69.02],
-			[44.38, -69.00],
+			[44.2500, -69.0450],
+
+			// UNION / SEARSMONT
+			[44.2300, -69.2500], // Union area
+			[44.3000, -69.3000],
+			[44.3500, -69.2000], // Searsmont area
+
+			// BELFAST / MONROE
 			[44.4289, -68.9947], // Belfast
+			[44.4800, -69.0500],
+			[44.5600, -69.0500], // Monroe area
 
-			[44.60, -68.90],
+			// NORTHERN EDGE / BANGOR
+			[44.6500, -68.9500],
 			[44.8012, -68.7778], // Bangor
-			[44.85, -68.65],
+			[44.8500, -68.6500],
 
-			[44.80, -68.50],
-			[44.70, -68.43],
+			// EASTERN PENINSULA
+			[44.9000, -68.5500],
+			[44.8500, -68.4000],
+			[44.7500, -68.3500],
+
+			// ELLSWORTH
 			[44.5434, -68.4195], // Ellsworth
+			[44.5000, -68.4300],
 
-			[44.50, -68.47],
+			// BLUE HILL
 			[44.4139, -68.5867], // Blue Hill
+			[44.3500, -68.6000],
 
-			[44.35, -68.62],
-			[44.28, -68.65],
-			[44.22, -68.70],
+			// TOWARD MOUNT DESERT / BAR HARBOR
+			[44.4000, -68.5000],
+			[44.4200, -68.3500],
+			[44.4300, -68.2500],
+			[44.3900, -68.2000],
+			[44.3300, -68.2500],
 
-			[44.15, -68.78],
-			[44.10, -68.90],
+			// SOUTHERN COAST / ISLAND REGION
+			[44.2800, -68.3500],
+			[44.2200, -68.4500],
+			[44.2000, -68.5500],
+			[44.1800, -68.6500],
+			[44.1500, -68.7500],
 
-			[44.0657, -69.1089] // Close polygon
+			// VINALHAVEN / ISLAND COVERAGE
+			[44.0500, -68.8500],
+			[44.0200, -68.9000],
+			[44.0500, -69.0000],
+
+			// BACK TO ROCKLAND
+			[44.0657, -69.1089]
 		];
 
 		// Draw the service area
 		L.polygon(serviceArea, {
-			color: "#2c5f73",
+			color: "#315f67",
 			weight: 2,
-			opacity: 0.9,
-			fillColor: "#2c5f73",
-			fillOpacity: 0.18
+			opacity: 0.8,
+			fillColor: "#6faaa5",
+			fillOpacity: 0.22,
+			lineJoin: "round"
 		}).addTo(map);
 
-		// Add labels for the major communities
-		var locations = [
-			[44.0657, -69.1089, "Rockland"],
-			[44.2098, -69.0648, "Camden"],
-			[44.4289, -68.9947, "Belfast"],
-			[44.8012, -68.7778, "Bangor"],
-			[44.5434, -68.4195, "Ellsworth"],
-			[44.4139, -68.5867, "Blue Hill"]
-		];
-
-		locations.forEach(function(location) {
-			L.circleMarker([location[0], location[1]], {
-				radius: 5,
-				color: "#2c5f73",
-				weight: 2,
-				fillColor: "#ffffff",
-				fillOpacity: 1
-			})
-			.addTo(map)
-			.bindTooltip(location[2], {
-				permanent: true,
-				direction: "top",
-				offset: [0, -6],
-				className: "precision-piano-map-label"
-			});
-		});
-
-		// Add a simple service-area label
+		// Attribution
 		L.control.attribution({
+			position: "bottomright",
 			prefix: false
 		}).addTo(map);
 
@@ -237,17 +264,14 @@ image: /images/NBSS-2026-057.jpg
 		width: 100%;
 		height: 450px;
 		min-height: 350px;
+		border-radius: 6px;
+		overflow: hidden;
+		box-shadow: 0 3px 14px rgba(0, 0, 0, 0.10);
 	}
 
-	.precision-piano-map-label {
-		background: rgba(255, 255, 255, 0.9);
-		border: none;
-		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-		color: #2c5f73;
-		font-family: inherit;
-		font-size: 12px;
-		font-weight: 600;
-		padding: 3px 6px;
-		border-radius: 3px;
+	#map .leaflet-control-attribution {
+		background: rgba(255, 255, 255, 0.75);
+		font-size: 9px;
+		padding: 2px 5px;
 	}
 </style>
