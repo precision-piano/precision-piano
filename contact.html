@@ -131,7 +131,19 @@ image: /images/NBSS-2026-057.jpg
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
 
-		// Create the map
+		/*
+		 * Precision Piano — Midcoast Maine Service Area
+		 *
+		 * This is intentionally a broad, rounded service area
+		 * rather than a precise municipal boundary.
+		 *
+		 * Approximate limits:
+		 * West  - Waldoboro
+		 * South - Tenant's Harbor
+		 * North - Bangor
+		 * East  - Milbridge
+		 */
+
 		var map = L.map("map", {
 			scrollWheelZoom: false,
 			dragging: false,
@@ -141,113 +153,108 @@ image: /images/NBSS-2026-057.jpg
 			zoomControl: false
 		}).setView([44.48, -68.72], 9);
 
-		// Clean OpenStreetMap base layer
+		/*
+		 * Clean, light OpenStreetMap base map
+		 */
 		L.tileLayer(
 			"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
 			{
 				maxZoom: 18,
-				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+				attribution:
+					'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 			}
 		).addTo(map);
 
+
 		/*
-		 * PRECISION PIANO SERVICE AREA
+		 * Broad, rounded service area.
 		 *
-		 * Approximate area includes:
-		 *
-		 * Rockland
-		 * South Thomaston
-		 * Thomaston
-		 * Owl's Head
-		 * Camden
-		 * Union
-		 * Searsport / Searsport area
-		 * Sears­mont
-		 * Belfast
-		 * Monroe
-		 * Bangor
-		 * Blue Hill
-		 * Ellsworth
-		 * Bar Harbor
-		 * Vinalhaven
-		 * and surrounding coastal/island communities
+		 * The many points here are NOT tracing individual towns.
+		 * They simply create a smooth oval shape.
 		 */
-
 		var serviceArea = [
+			// Western side — Waldoboro
+			[44.10, -69.35],
+			[44.25, -69.38],
+			[44.45, -69.40],
+			[44.65, -69.32],
+			[44.85, -69.15],
 
-			// SOUTHWESTERN EDGE
-			[44.0657, -69.1089], // Rockland
-			[44.0500, -69.1000], // South Thomaston
-			[44.0750, -69.1500], // Thomaston / Owl's Head area
+			// Northern side — Bangor
+			[45.00, -68.95],
+			[45.05, -68.70],
+			[45.05, -68.40],
+			[44.98, -68.10],
 
-			// MIDCOAST / CAMDEN
-			[44.1200, -69.0900],
-			[44.1500, -69.0750],
-			[44.2098, -69.0648], // Camden
-			[44.2500, -69.0450],
+			// Eastern side — toward Milbridge
+			[44.88, -67.85],
+			[44.70, -67.72],
+			[44.52, -67.75],
+			[44.35, -67.88],
 
-			// UNION / SEARSMONT
-			[44.2300, -69.2500], // Union area
-			[44.3000, -69.3000],
-			[44.3500, -69.2000], // Searsmont area
+			// Southeast — coastal / island region
+			[44.20, -68.05],
+			[44.10, -68.25],
+			[44.00, -68.45],
+			[43.95, -68.70],
 
-			// BELFAST / MONROE
-			[44.4289, -68.9947], // Belfast
-			[44.4800, -69.0500],
-			[44.5600, -69.0500], // Monroe area
+			// Southern side — Tenant's Harbor
+			[43.90, -68.90],
+			[43.92, -69.10],
+			[44.00, -69.25],
 
-			// NORTHERN EDGE / BANGOR
-			[44.6500, -68.9500],
-			[44.8012, -68.7778], // Bangor
-			[44.8500, -68.6500],
-
-			// EASTERN PENINSULA
-			[44.9000, -68.5500],
-			[44.8500, -68.4000],
-			[44.7500, -68.3500],
-
-			// ELLSWORTH
-			[44.5434, -68.4195], // Ellsworth
-			[44.5000, -68.4300],
-
-			// BLUE HILL
-			[44.4139, -68.5867], // Blue Hill
-			[44.3500, -68.6000],
-
-			// TOWARD MOUNT DESERT / BAR HARBOR
-			[44.4000, -68.5000],
-			[44.4200, -68.3500],
-			[44.4300, -68.2500],
-			[44.3900, -68.2000],
-			[44.3300, -68.2500],
-
-			// SOUTHERN COAST / ISLAND REGION
-			[44.2800, -68.3500],
-			[44.2200, -68.4500],
-			[44.2000, -68.5500],
-			[44.1800, -68.6500],
-			[44.1500, -68.7500],
-
-			// VINALHAVEN / ISLAND COVERAGE
-			[44.0500, -68.8500],
-			[44.0200, -68.9000],
-			[44.0500, -69.0000],
-
-			// BACK TO ROCKLAND
-			[44.0657, -69.1089]
+			// Southwest back toward Waldoboro
+			[44.05, -69.32]
 		];
 
-		// Draw the service area
+
+		/*
+		 * Main service-area shape
+		 */
 		L.polygon(serviceArea, {
 			color: "#315f67",
 			weight: 2,
-			opacity: 0.8,
-			fillColor: "#6faaa5",
-			fillOpacity: 0.22,
+			opacity: 0.65,
+			fillColor: "#79aaa5",
+			fillOpacity: 0.20,
 			lineJoin: "round"
 		}).addTo(map);
 
-		// Attribution
+
+		/*
+		 * Add a very subtle inner highlight.
+		 * This gives the area a softer, less "zoning map"
+		 * appearance without adding labels or markers.
+		 */
+		var innerArea = [
+			[44.15, -69.27],
+			[44.32, -69.30],
+			[44.55, -69.28],
+			[44.78, -69.10],
+			[44.92, -68.80],
+			[44.93, -68.40],
+			[44.83, -68.05],
+			[44.60, -67.90],
+			[44.38, -68.00],
+			[44.18, -68.25],
+			[44.05, -68.55],
+			[44.00, -68.82],
+			[44.03, -69.05],
+			[44.10, -69.22]
+		];
+
+		L.polygon(innerArea, {
+			color: "#79aaa5",
+			weight: 0,
+			fillColor: "#9bc5bf",
+			fillOpacity: 0.08,
+			interactive: false
+		}).addTo(map);
+
+
+		/*
+		 * Map attribution
+		 */
 		L.control.attribution({
 			position: "bottomright",
 			prefix: false
@@ -261,13 +268,13 @@ image: /images/NBSS-2026-057.jpg
 		width: 100%;
 		height: 450px;
 		min-height: 350px;
-		border-radius: 6px;
+		border-radius: 8px;
 		overflow: hidden;
-		box-shadow: 0 3px 14px rgba(0, 0, 0, 0.10);
+		box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10);
 	}
 
 	#map .leaflet-control-attribution {
-		background: rgba(255, 255, 255, 0.75);
+		background: rgba(255, 255, 255, 0.72);
 		font-size: 9px;
 		padding: 2px 5px;
 	}
