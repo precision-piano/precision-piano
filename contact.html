@@ -1,102 +1,264 @@
+---
+
+title: Contact
+description: Get in touch with Precision Piano for piano tuning, repair, regulation, evaluation or moving throughout Midcoast Maine.
+image: /images/NBSS-2026-057.jpg
+--------------------------------
+
+<section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
+	<div class="inner-hero text-container">
+		<div class="hero-text-container">
+			<h1>Schedule Your Piano Service</h1>
+			<p class="subtext">
+				Questions about tuning, repair, regulation or moving?
+				Send us a message and we'll get back to you as soon as we can.
+			</p>
+		</div>
+	</div>
+</section>
+
 <section class="pad">
 	<div class="text-container contact-box">
 
-		<div class="primary-contact">
-			<h2>Call or Text Us</h2>
+```
+	<div class="primary-contact">
+		<h2>Call or Text Us</h2>
 
-			<p class="phone-label">
-				The fastest way to reach Precision Piano is by phone.
-			</p>
+		<p class="phone-label">
+			The fastest way to reach Precision Piano is by phone.
+		</p>
 
-			<a class="phone-number" href="tel:+14234431678">
-				423-443-1678
+		<a class="phone-number" href="tel:+14234431678">
+			423-443-1678
+		</a>
+
+		<p class="phone-note">
+			Call or text to ask a question, schedule a service, or
+			discuss your piano's needs.
+		</p>
+	</div>
+
+	<div class="contact-divider">
+		<span>or send us a message</span>
+	</div>
+
+	<form action="https://formspree.io/f/xaeyvnrq" method="post" class="contact-form">
+
+		<label for="name">Name</label>
+		<input
+			type="text"
+			name="name"
+			id="name"
+			placeholder="Enter your name..."
+			required
+		>
+
+		<label for="email">Email Address</label>
+		<input
+			type="email"
+			name="email"
+			id="email"
+			placeholder="Enter your email..."
+			required
+		>
+
+		<label for="phone">Phone</label>
+		<input
+			type="tel"
+			name="phone"
+			id="phone"
+			placeholder="Enter your phone number..."
+		>
+
+		<label for="service">Service Needed</label>
+		<select name="service" id="service">
+			<option value="">Select a service...</option>
+			<option value="Piano tuning">Piano tuning</option>
+			<option value="Regulation / voicing">Regulation / voicing</option>
+			<option value="Piano repair">Piano repair</option>
+			<option value="Piano evaluation">Piano evaluation</option>
+			<option value="Rebuilding / restoration">Rebuilding / restoration</option>
+			<option value="Piano moving">Piano moving</option>
+			<option value="Not sure">I'm not sure</option>
+		</select>
+
+		<label for="message">Message</label>
+		<textarea
+			name="message"
+			id="message"
+			placeholder="Tell us about your piano or service needs..."
+			required
+		></textarea>
+
+		<input
+			type="hidden"
+			name="_subject"
+			value="New Precision Piano website inquiry"
+		>
+
+		<input
+			type="text"
+			name="_gotcha"
+			style="display:none;"
+		>
+
+		<input type="submit" value="Send Message">
+
+	</form>
+
+	<div class="contact-details">
+
+		<h3>Email</h3>
+
+		<p>
+			<a href="mailto:borchardwill@gmail.com">
+				borchardwill@gmail.com
 			</a>
-
-			<p class="phone-note">
-				Call or text to ask a question, schedule a service, or
-				discuss your piano's needs.
-			</p>
-		</div>
-
-		<div class="contact-divider">
-			<span>or send us a message</span>
-		</div>
-
-		<form action="https://formspree.io/f/xaeyvnrq" method="post" class="contact-form">
-
-			<label for="name">Name</label>
-			<input
-				type="text"
-				name="name"
-				id="name"
-				placeholder="Enter your name..."
-				required
-			>
-
-			<label for="email">Email Address</label>
-			<input
-				type="email"
-				name="email"
-				id="email"
-				placeholder="Enter your email..."
-				required
-			>
-
-			<label for="phone">Phone</label>
-			<input
-				type="tel"
-				name="phone"
-				id="phone"
-				placeholder="Enter your phone number..."
-			>
-
-			<label for="service">Service Needed</label>
-			<select name="service" id="service">
-				<option value="">Select a service...</option>
-				<option value="Piano tuning">Piano tuning</option>
-				<option value="Regulation / voicing">Regulation / voicing</option>
-				<option value="Piano repair">Piano repair</option>
-				<option value="Piano evaluation">Piano evaluation</option>
-				<option value="Rebuilding / restoration">Rebuilding / restoration</option>
-				<option value="Piano moving">Piano moving</option>
-				<option value="Not sure">I'm not sure</option>
-			</select>
-
-			<label for="message">Message</label>
-			<textarea
-				name="message"
-				id="message"
-				placeholder="Tell us about your piano or service needs..."
-				required
-			></textarea>
-
-			<input
-				type="hidden"
-				name="_subject"
-				value="New Precision Piano website inquiry"
-			>
-
-			<input
-				type="text"
-				name="_gotcha"
-				style="display:none;"
-			>
-
-			<input type="submit" value="Send Message">
-
-		</form>
-
-		<div class="contact-details">
-
-			<h3>Email</h3>
-
-			<p>
-				<a href="mailto:borchardwill@gmail.com">
-					borchardwill@gmail.com
-				</a>
-			</p>
-
-		</div>
+		</p>
 
 	</div>
+
+</div>
+```
+
 </section>
+
+<section class="service-area-section">
+
+```
+<div class="text-container">
+
+	<h2>Our Service Area</h2>
+
+	<p>
+		Precision Piano serves communities throughout Midcoast Maine,
+		from the Belfast and Camden area east toward Bar Harbor and
+		Milbridge, and north toward Bangor.
+	</p>
+
+</div>
+
+<div class="map" id="map"></div>
+```
+
+</section>
+
+<link
+	rel="stylesheet"
+	href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+	var map = L.map("map", {
+		scrollWheelZoom: false,
+		dragging: false,
+		doubleClickZoom: false,
+		boxZoom: false,
+		keyboard: false,
+		zoomControl: false
+	}).setView([44.48, -68.72], 8.7);
+
+	L.tileLayer(
+		"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+		{
+			maxZoom: 18,
+			attribution:
+				'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+		}
+	).addTo(map);
+
+	var serviceArea = [
+
+		// Western boundary — Waldoboro
+		[44.10, -69.35],
+		[44.25, -69.38],
+		[44.45, -69.40],
+		[44.62, -69.32],
+		[44.72, -69.15],
+
+		// Northern boundary — Bangor
+		[44.78, -68.95],
+		[44.80, -68.70],
+		[44.80, -68.45],
+		[44.76, -68.20],
+
+		// Eastern boundary — toward Milbridge
+		[44.70, -67.95],
+		[44.62, -67.78],
+		[44.48, -67.72],
+		[44.35, -67.82],
+
+		// Southeast
+		[44.20, -68.00],
+		[44.08, -68.25],
+		[44.00, -68.48],
+		[43.94, -68.70],
+
+		// Southern boundary — Tenant's Harbor
+		[43.90, -68.90],
+		[43.92, -69.10],
+		[44.00, -69.25],
+
+		// Southwest
+		[44.05, -69.32]
+	];
+
+	L.polygon(serviceArea, {
+		color: "#315f67",
+		weight: 2,
+		opacity: 0.65,
+		fillColor: "#79aaa5",
+		fillOpacity: 0.20,
+		lineJoin: "round"
+	}).addTo(map);
+
+	L.control.attribution({
+		position: "bottomright",
+		prefix: false
+	}).addTo(map);
+
+});
+</script>
+
+<style>
+
+.service-area-section {
+	padding-bottom: 0;
+}
+
+.service-area-section .text-container {
+	padding-bottom: 30px;
+}
+
+.service-area-section h2 {
+	margin-bottom: 10px;
+}
+
+.service-area-section p {
+	max-width: 750px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.primary-contact {
+	text-align: center;
+	margin-bottom: 35px;
+}
+
+.primary-contact h2 {
+	margin-bottom: 10px;
+}
+
+.phone-label {
+	margin-bottom: 10px;
+}
+
+.phone-number {
+	display: inline-block;
+	font-size: 2.2em;
+	font-weight: 600;
+	letter-spacing: 0.02e
