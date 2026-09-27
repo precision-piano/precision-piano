@@ -1,285 +1,102 @@
----
-title: Contact
-image: /images/Precision_Piano_page-0001.jpg
-
----
-
-<section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
-	<div class="inner-hero text-container">
-		<div class="hero-text-container">
-			<h1 class="editable">Schedule Your Piano Service</h1>
-			<p class="subtext editable">Questions about tuning, repair or moving? Send us a message and we'll get back to you as soon as we can.</p>
-		</div>
-	</div>
-</section>
-
-	<div class>
-			<h3>=Give us a call to schedule your piano service today</h3>
-			<p class="editable"><a href="tel:+14234431678">423-443-1678</a></p>
-
-		</div>
-	</div>
-
 <section class="pad">
 	<div class="text-container contact-box">
-		<form action="https://formspree.io/f/xaeyvnrq" method="POST">
 
-  <div class="form-group">
-    <label for="name">Name <span aria-hidden="true">*</span></label>
-    <input
-      type="text"
-      id="name"
-      name="name"
-      autocomplete="name"
-      required
-    >
-  </div>
+		<div class="primary-contact">
+			<h2>Call or Text Us</h2>
 
-  <div class="form-group">
-    <label for="email">Email <span aria-hidden="true">*</span></label>
-    <input
-      type="email"
-      id="email"
-      name="email"
-      autocomplete="email"
-      required
-    >
-  </div>
+			<p class="phone-label">
+				The fastest way to reach Precision Piano is by phone.
+			</p>
 
-  <div class="form-group">
-    <label for="phone">Phone <span aria-hidden="true">*</label>
-    <input
-      type="tel"
-      id="phone"
-      name="phone"
-      autocomplete="tel"
-	  required
-    >
-  </div>
+			<a class="phone-number" href="tel:+14234431678">
+				423-443-1678
+			</a>
 
-	<div class="form-group">
-    <label for="address">Address <span aria-hidden="true">*</label>
-    <input
-      type="where"
-      id="address"
-      name="address"
-      autocomplete="where"
-	  
-    >
-  </div>
+			<p class="phone-note">
+				Call or text to ask a question, schedule a service, or
+				discuss your piano's needs.
+			</p>
+		</div>
 
-			
-  <div class="form-group">
-    <label for="service">What can we help you with?</label>
-    <select id="service" name="service">
-      <option value="">Please select a service</option>
-      <option value="Piano tuning">Piano tuning</option>
-      <option value="Piano repair">Piano repair</option>
-      <option value="Regulation / voicing">Regulation / voicing</option>
-      <option value="Piano evaluation">Piano evaluation</option>
-      <option value="Rebuilding / restoration">Rebuilding / restoration</option>
-      <option value="Piano moving">Piano moving</option>
-      <option value="Not sure">I'm not sure</option>
-    </select>
-  </div>
+		<div class="contact-divider">
+			<span>or send us a message</span>
+		</div>
 
-  <div class="form-group">
-    <label for="message"></span></label>
-    <textarea
-      id="message"
-      name="message"
-      rows="7"
-      placeholder="Tell us about your piano and how we can help."
-      
-    ></textarea>
-  </div>
+		<form action="https://formspree.io/f/xaeyvnrq" method="post" class="contact-form">
 
-  <!-- Email subject -->
-  <input
-    type="hidden"
-    name="_subject"
-    value="New Precision Piano Website Inquiry"
-  >
+			<label for="name">Name</label>
+			<input
+				type="text"
+				name="name"
+				id="name"
+				placeholder="Enter your name..."
+				required
+			>
 
-  <!-- Spam protection -->
-  <div style="position:absolute; left:-9999px;" aria-hidden="true">
-    <label for="website">Leave this field blank</label>
-    <input
-      type="text"
-      id="website"
-      name="_gotcha"
-      tabindex="-1"
-      autocomplete="off"
-    >
-  </div>
+			<label for="email">Email Address</label>
+			<input
+				type="email"
+				name="email"
+				id="email"
+				placeholder="Enter your email..."
+				required
+			>
 
-  <button type="submit">Send Message</button>
+			<label for="phone">Phone</label>
+			<input
+				type="tel"
+				name="phone"
+				id="phone"
+				placeholder="Enter your phone number..."
+			>
 
-</form>
+			<label for="service">Service Needed</label>
+			<select name="service" id="service">
+				<option value="">Select a service...</option>
+				<option value="Piano tuning">Piano tuning</option>
+				<option value="Regulation / voicing">Regulation / voicing</option>
+				<option value="Piano repair">Piano repair</option>
+				<option value="Piano evaluation">Piano evaluation</option>
+				<option value="Rebuilding / restoration">Rebuilding / restoration</option>
+				<option value="Piano moving">Piano moving</option>
+				<option value="Not sure">I'm not sure</option>
+			</select>
 
+			<label for="message">Message</label>
+			<textarea
+				name="message"
+				id="message"
+				placeholder="Tell us about your piano or service needs..."
+				required
+			></textarea>
 
+			<input
+				type="hidden"
+				name="_subject"
+				value="New Precision Piano website inquiry"
+			>
+
+			<input
+				type="text"
+				name="_gotcha"
+				style="display:none;"
+			>
+
+			<input type="submit" value="Send Message">
+
+		</form>
+
+		<div class="contact-details">
+
+			<h3>Email</h3>
+
+			<p>
+				<a href="mailto:borchardwill@gmail.com">
+					borchardwill@gmail.com
+				</a>
+			</p>
+
+		</div>
+
+	</div>
 </section>
-
-<div class="map" id="map"></div>
-
-<link
-	rel="stylesheet"
-	href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<script>
-	document.addEventListener("DOMContentLoaded", function () {
-
-		/*
-		 * Precision Piano — Midcoast Maine Service Area
-		 *
-		 * Approximate limits:
-		 * West  - Waldoboro
-		 * South - Tenant's Harbor
-		 * North - Bangor
-		 * East  - Milbridge
-		 */
-
-		var map = L.map("map", {
-			scrollWheelZoom: false,
-			dragging: false,
-			doubleClickZoom: false,
-			boxZoom: false,
-			keyboard: false,
-			zoomControl: false
-		}).setView([44.48, -68.72], 8.7);
-
-
-		/*
-		 * Clean OpenStreetMap base map
-		 */
-		L.tileLayer(
-			"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-			{
-				maxZoom: 18,
-				attribution:
-					'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-			}
-		).addTo(map);
-
-
-		/*
-		 * Broad, rounded service area.
-		 *
-		 * Bangor is the northern limit.
-		 * The shape intentionally remains smooth and
-		 * approximate rather than following town boundaries.
-		 */
-		var serviceArea = [
-
-			// Western side — Waldoboro
-			[44.10, -69.35],
-			[44.25, -69.38],
-			[44.45, -69.40],
-			[44.65, -69.32],
-			[44.82, -69.15],
-
-			// Northern side — Bangor
-			[44.90, -68.95],
-			[44.92, -68.70],
-			[44.92, -68.45],
-			[44.88, -68.20],
-
-			// Eastern side — toward Milbridge
-			[44.80, -67.85],
-			[44.65, -67.72],
-			[44.50, -67.75],
-			[44.35, -67.88],
-
-			// Southeast — coastal / island region
-			[44.20, -68.05],
-			[44.10, -68.25],
-			[44.00, -68.45],
-			[43.95, -68.70],
-
-			// Southern side — Tenant's Harbor
-			[43.90, -68.90],
-			[43.92, -69.10],
-			[44.00, -69.25],
-
-			// Southwest back toward Waldoboro
-			[44.05, -69.32]
-		];
-
-
-		/*
-		 * Main service-area shape
-		 */
-		L.polygon(serviceArea, {
-			color: "#315f67",
-			weight: 2,
-			opacity: 0.65,
-			fillColor: "#79aaa5",
-			fillOpacity: 0.20,
-			lineJoin: "round"
-		}).addTo(map);
-
-
-		/*
-		 * Subtle inner highlight
-		 */
-		var innerArea = [
-
-			[44.15, -69.27],
-			[44.32, -69.30],
-			[44.55, -69.28],
-			[44.75, -69.12],
-			[44.86, -68.82],
-
-			// Northern edge stays below Bangor
-			[44.87, -68.55],
-			[44.84, -68.30],
-			[44.78, -68.05],
-
-			[44.60, -67.90],
-			[44.38, -68.00],
-			[44.18, -68.25],
-			[44.05, -68.55],
-			[44.00, -68.82],
-			[44.03, -69.05],
-			[44.10, -69.22]
-		];
-
-		L.polygon(innerArea, {
-			color: "#79aaa5",
-			weight: 0,
-			fillColor: "#9bc5bf",
-			fillOpacity: 0.08,
-			interactive: false
-		}).addTo(map);
-
-
-		/*
-		 * Map attribution
-		 */
-		L.control.attribution({
-			position: "bottomright",
-			prefix: false
-		}).addTo(map);
-
-	});
-</script>
-
-<style>
-	#map {
-		width: 100%;
-		height: 450px;
-		min-height: 350px;
-		border-radius: 8px;
-		overflow: hidden;
-		box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10);
-	}
-
-	#map .leaflet-control-attribution {
-		background: rgba(255, 255, 255, 0.72);
-		font-size: 9px;
-		padding: 2px 5px;
-	}
-</style>
