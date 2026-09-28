@@ -17,6 +17,50 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300|Rubik:300&display=swap">
 		<link rel="stylesheet" href="{{ site.baseurl }}/css/screen.css">
 
+		<!-- Precision Piano business information for search engines -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "LocalBusiness",
+			"@id": "{{ site.url }}#business",
+			"name": "Precision Piano",
+			"url": "{{ site.url }}",
+			"telephone": "+14234431678",
+			"description": "Professional piano tuning, repair, regulation, voicing, restoration and moving throughout Midcoast and Downeast Maine.",
+			"image": "{{ site.url }}/images/website_restoration_picture.jpg",
+			"sameAs": [
+				"https://www.facebook.com/profile.php?id=61593185802673",
+				"https://www.instagram.com/precisionpianomaine/"
+			],
+			"areaServed": [
+				{
+					"@type": "AdministrativeArea",
+					"name": "Midcoast Maine"
+				},
+				{
+					"@type": "AdministrativeArea",
+					"name": "Downeast Maine"
+				}
+			],
+			"knowsAbout": [
+				"Piano tuning",
+				"Piano repair",
+				"Piano regulation",
+				"Piano voicing",
+				"Piano restoration",
+				"Piano rebuilding",
+				"Piano moving",
+				"Steinway & Sons pianos",
+				"Mason & Hamlin pianos",
+				"Yamaha pianos",
+				"Bechstein pianos",
+				"Blüthner pianos",
+				"Chickering pianos",
+				"Baldwin pianos"
+			]
+		}
+		</script>
+
 		{% if jekyll.environment == 'production' and site.google_analytics_key != '' %}
 			<script>
 				window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments);};ga.l=+new Date;
