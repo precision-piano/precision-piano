@@ -2,18 +2,21 @@
 # Site
 
 title: Precision Piano
-url: "https://precisionpianomaine.com"
+url: "https://www.precisionpianomaine.com"
 baseurl:
+
 google_analytics_key:
 disqus_shortname:
 
-# Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
+# Values for the jekyll-seo-tag gem
 logo: /siteicon.png
-description: Piano tuning, regulation, repair and moving, serving midcoast Maine.
+description: Professional piano tuning, repair, regulation, voicing, restoration and moving throughout Midcoast and Downeast Maine.
+
 author:
   name: Frank Fischer
-  email: info@precisionpianome.com
-  twitter: # twitter username without the @ symbol
+  email:
+  twitter:
+
 social:
   name: Precision Piano
   links:
@@ -61,11 +64,13 @@ defaults:
           width: 440
           height: 440
           uploads_dir: "/images/staff_members"
+
   -
     scope:
       path: ""
     values:
       layout: "default"
+
   -
     scope:
       type: "posts"
@@ -81,11 +86,13 @@ defaults:
           width: 1500
           height: 2000
           uploads_dir: "/images/post_uploads"
+
   -
     scope:
       path: "contact-success.html"
     values:
       layout: "page"
+
   -
     scope:
       path: ""
