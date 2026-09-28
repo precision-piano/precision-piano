@@ -5,15 +5,22 @@ left_links:
     link: /blog/
   - name: Contact
     link: /contact/
+
 right_links:
-  - name:
-    link: https://facebook.com/
+  - name: Facebook
+    link: https://www.facebook.com/profile.php?id=61593185802673
     new_window: true
     social_icon: Facebook
-  - name:
-    link: https://instagram.com/
+
+  - name: Instagram
+    link: https://www.instagram.com/precisionpianomaine/
     new_window: true
     social_icon: Instagram
-  - name:
+
+  - name: Google Reviews
+    link: https://share.google/Y6s06soKlqdZ5yuNK
+    new_window: true
+
+  - name: RSS
     link: /feed.xml
     social_icon: RSS
